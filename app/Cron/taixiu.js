@@ -31,7 +31,7 @@ function getIndex(arr,name){
 }
 let topUser = function(){
 	TaiXiu_User.find({'totall':{$gt:0}}, 'totall uid', {sort:{totall:-1}, limit:10}, function(err, results) {
-		Promise.all(results.map(function(obj){
+		Promise.all((result || []).map(function(obj){ ... }
 			return new Promise(function(resolve, reject) {
 				UserInfo.findOne({'id': obj.uid}, function(error, result2){
 					resolve({name:!!result2 ? result2.name : ''});
